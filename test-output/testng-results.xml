@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-03-12T09:47:51 IST" name="GUI Suite" finished-at="2026-03-12T09:48:24 IST" duration-ms="33491">
+    <groups>
+    </groups>
+    <test started-at="2026-03-12T09:47:51 IST" name="GUI Tests" finished-at="2026-03-12T09:48:24 IST" duration-ms="33491">
+      <class name="GuiTest.GUIElementsTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:GuiTest.GUIElementsTest@6a6cb05c]" started-at="2026-03-12T09:47:51 IST" name="setup" finished-at="2026-03-12T09:48:00 IST" duration-ms="9149" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="GUIFormTest()[pri:0, instance:GuiTest.GUIElementsTest@6a6cb05c]" started-at="2026-03-12T09:48:00 IST" name="GUIFormTest" finished-at="2026-03-12T09:48:22 IST" duration-ms="21707" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GUIFormTest -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:GuiTest.GUIElementsTest@6a6cb05c]" started-at="2026-03-12T09:48:22 IST" name="teardown" finished-at="2026-03-12T09:48:24 IST" duration-ms="2514" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- GuiTest.GUIElementsTest -->
+    </test> <!-- GUI Tests -->
+  </suite> <!-- GUI Suite -->
+</testng-results>

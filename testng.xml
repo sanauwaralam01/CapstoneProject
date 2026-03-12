@@ -1,0 +1,15 @@
+<suite name="GUI Suite">
+
+    <listeners>
+        <listener class-name="listeners.TestListner"/>
+    </listeners>
+
+    <test name="GUI Tests">
+
+        <classes>
+            <class name="GuiTest.GUIElementsTest"/>
+        </classes>
+
+    </test>
+
+</suite>
