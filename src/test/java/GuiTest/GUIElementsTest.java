@@ -7,8 +7,6 @@ import utility.ScreenshotUtility;
 
 public class GUIElementsTest extends BaseTest {
 
-
-
 	@Test
 
     public void GUIFormTest() throws Exception {
@@ -31,6 +29,9 @@ public class GUIElementsTest extends BaseTest {
         page.selectSortedList();
 
         page.selectDate();
+        page.selectDate2("Jun","2026","6");
+        
+        page.RangeDate("06-06-2026", "10-06-2026");
 
         page.uploadFile();
 
@@ -55,14 +56,14 @@ public class GUIElementsTest extends BaseTest {
         page.dragDrop();
 
         page.DropDown();
-       
-        page.Youtube();
         
+        page.verifyLaptopLink("apple", "Apple");
+        page.verifyLaptopLink("lenovo", "Lenovo");
+        page.verifyLaptopLink("dell", "Dell");
+     
+        page.Youtube();
+               
       
-
-
-
-
         ScreenshotUtility.takeScreenshot(driver,"GUIElements");
     }
 }

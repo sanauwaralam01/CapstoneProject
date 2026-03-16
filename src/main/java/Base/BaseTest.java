@@ -12,12 +12,12 @@ public class BaseTest {
 	protected WebDriver driver ;
 	ConfigReader config;
 	@BeforeMethod
-	public void setup() {
+	/*public void setup() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://testautomationpractice.blogspot.com");
-	}
-	/*public void setup() throws Exception {
+	}*/
+	public void setup() throws Exception {
 
 		config = new ConfigReader();
 
@@ -39,7 +39,7 @@ public class BaseTest {
 
         // Open URL from config.properties
         driver.get(config.getURL());
-    }*/
+    }
 
 	@AfterMethod
 	public void teardown() {

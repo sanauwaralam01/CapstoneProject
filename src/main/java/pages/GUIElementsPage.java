@@ -1,7 +1,9 @@
 package pages;
 
+import java.io.DataInput;
 import java.time.Duration;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -32,14 +34,14 @@ public class GUIElementsPage {
 	public void selectGender() {
 	     driver.findElement(By.id("male")).click();
 	}
-	public void selectDays() {
+	public void selectDays() { //checkbox
 
         driver.findElement(By.id("monday")).click();
         driver.findElement(By.id("wednesday")).click();
         driver.findElement(By.id("friday")).click();
     }
 
-    public void selectCountry() {
+    public void selectCountry() {  // dropdown
 
         Select country = new Select(driver.findElement(By.id("country")));
         country.selectByVisibleText("India");
@@ -69,10 +71,52 @@ public class GUIElementsPage {
         WebElement date = driver.findElement(By.id("datepicker"));
         date.sendKeys("03/06/2026");
     }
-    public void selectDate2() {
+    public void selectDate2(String monthValue, String yearValue, String dayValue) {
 
-        WebElement date2 = driver.findElement(By.id("txtDate"));
-        date2.sendKeys("06/06/2026");
+        // open date picker
+        driver.findElement(By.id("txtDate")).click();
+
+        // select month
+        Select month = new Select(driver.findElement(By.className("ui-datepicker-month")));
+        month.selectByVisibleText(monthValue);
+
+        // select year
+        Select year = new Select(driver.findElement(By.className("ui-datepicker-year")));
+        year.selectByVisibleText(yearValue);
+
+        // click day
+        String dayXpath = String.format("//a[text()='%s']", dayValue);
+        driver.findElement(By.xpath(dayXpath)).click();
+    }
+    public void RangeDate(String start, String end) throws InterruptedException {
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        
+        WebElement startDate = driver.findElement(By.id("start-date"));
+        WebElement enddate = driver.findElement(By.id("end-date"));
+        WebElement submit = driver.findElement(By.className("submit-btn"));
+        
+        // splitting the calender format accordint to the input--	
+        String[] startParts = start.split("-");
+        
+        //now we store that formatted split date into an array
+        String formattedStart = startParts[2] + "-" + startParts[1] + "-" + startParts[0];
+
+        String[] endParts = end.split("-");
+        String formattedEnd = endParts[2] + "-" + endParts[1] + "-" + endParts[0];
+        
+        // and with js script we can enter the values into required format
+
+        js.executeScript("arguments[0].value = arguments[1];", startDate, formattedStart);
+        js.executeScript("arguments[0].value = arguments[1];", enddate, formattedEnd);
+
+        submit.click();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void uploadFile() {
@@ -163,6 +207,31 @@ public class GUIElementsPage {
     }
     public void DropDown() {
     		driver.findElement(By.id("comboBox")).sendKeys("Item 1");
+    }
+    public void verifyLaptopLink(String linkId, String expectedTitle) throws InterruptedException {
+
+        String mainWindow = driver.getWindowHandle();
+
+        // click laptop link
+        driver.findElement(By.id(linkId)).click();
+
+        // wait for page to open
+        Thread.sleep(1000);
+
+        // get title
+        String actualTitle = driver.getTitle();
+
+        if(actualTitle.contains(expectedTitle)) {
+            System.out.println("Title verified for " + expectedTitle);
+        } 
+        else {
+            System.out.println("Title mismatch for " + expectedTitle);
+        }
+
+        // go back to main page
+        driver.navigate().back();
+
+        Thread.sleep(1000);
     }
     
    
